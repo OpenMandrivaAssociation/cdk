@@ -1,18 +1,19 @@
-%define lib_name	%mklibname %{name}
-%define	lib_name_devel	%mklibname %{name} -d
-%define	oldlibname	lib%{name}4-devel
+%define major		4
+%define libname		%mklibname %{name} %{major}
+%define	develname	%mklibname %{name} -d
+%define	oldlibname	%mklibname %name 4 -d
 
 %define	name		cdk
-%define	version		4.9.11
-%define	release		%mkrel 5
+%define	version		4.9.13
+%define	release		%mkrel 1
 
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Source0:	%{name}.tar.bz2
+Source0:	http://www.vexus.ca/products/CDK/{name}.tar.gz
 License:	BSD
 Group:		System/Libraries
-URL:		http://www.vexus.ca/CDK.html
+URL:		http://www.vexus.ca/products/CDK
 Summary:	Curses Development Kit
 BuildRequires:	ncurses-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -22,7 +23,7 @@ Cdk stands for 'Curses Development Kit' and it currently contains 21 ready
 to use widgets which facilitate the speedy development of full screen
 curses programs.
 
-%package -n	%{lib_name_devel}
+%package -n	%{develname}
 Summary:	Headers to develop cdk-based applications
 Group:		Development/C
 Provides:	%{name}-devel = %{version}-%{release}
@@ -30,7 +31,7 @@ Provides:	lib%{name}-devel
 Provides:	%{oldlibname}
 Obsoletes:	%{oldlibname}
 
-%description -n	%{lib_name_devel}
+%description -n	%{develname}
 These are the header files, and cdk preprocessor for developing
 cdk-based applications.
 
@@ -53,7 +54,7 @@ make installCDKManPages INSTALL_DIR=$RPM_BUILD_ROOT%{_datadir}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -n %{lib_name_devel}
+%files -n %{develname}
 %defattr(-,root,root)
 %doc COPYING README BUGS TODO CHANGES NOTES EXPANDING
 %dir %{_includedir}/%{name}
