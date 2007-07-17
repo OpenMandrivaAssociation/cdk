@@ -10,7 +10,7 @@
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Source0:	http://www.vexus.ca/products/CDK/{name}.tar.gz
+Source0:	http://www.vexus.ca/products/CDK/%{name}.tar.gz
 License:	BSD
 Group:		System/Libraries
 URL:		http://www.vexus.ca/products/CDK
