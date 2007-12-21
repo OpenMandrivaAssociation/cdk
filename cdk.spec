@@ -16,6 +16,7 @@ Group:		System/Libraries
 URL:		http://www.vexus.ca/products/CDK
 Summary:	Curses Development Kit
 BuildRequires:	ncurses-devel
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Cdk stands for 'Curses Development Kit' and it currently contains 21 ready
