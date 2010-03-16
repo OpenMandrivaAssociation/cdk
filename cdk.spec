@@ -5,7 +5,7 @@
 
 %define	name		cdk
 %define	version		4.9.13
-%define	release		%mkrel 3
+%define	release		%mkrel 4
 
 Name:		%{name}
 Version:	%{version}
