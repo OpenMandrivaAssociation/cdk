@@ -45,14 +45,14 @@ export CFLAGS="%{optflags} -fPIC"
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_includedir}/%{name}
-make installCDKHeaderFiles installCDKLibrary INSTALL_DIR=$RPM_BUILD_ROOT%{_prefix}
-install -d $RPM_BUILD_ROOT%{_mandir}/man3
-make installCDKManPages INSTALL_DIR=$RPM_BUILD_ROOT%{_datadir}
+rm -rf %{buildroot}
+install -d %{buildroot}%{_includedir}/%{name}
+make installCDKHeaderFiles installCDKLibrary INSTALL_DIR=%{buildroot}%{_prefix}
+install -d %{buildroot}%{_mandir}/man3
+make installCDKManPages INSTALL_DIR=%{buildroot}%{_datadir}
  
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files -n %{develname}
 %defattr(-,root,root)
