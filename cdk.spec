@@ -3,9 +3,11 @@
 %define	develname	%mklibname %{name} -d
 %define	oldlibname	%mklibname %name 4 -d
 
+%define debug_package          %{nil}
+
 %define	name		cdk
 %define	version		4.9.13
-%define	release		%mkrel 8
+%define	release		9
 
 Name:		%{name}
 Version:	%{version}
