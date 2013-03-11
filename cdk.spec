@@ -23,8 +23,6 @@ curses programs.
 Summary:	Headers to develop cdk-based applications
 Group:		Development/C
 Provides:	%{name}-devel = %{version}-%{release}
-Provides:	%{oldlibname}
-Obsoletes:	%{oldlibname}
 
 %description -n	%{devname}
 These are the header files, and cdk preprocessor for developing
