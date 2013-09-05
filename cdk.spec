@@ -1,8 +1,6 @@
-%define debug_package          %{nil}
+%define debug_package %{nil}
 
-%define major	4
-%define libname	%mklibname %{name} %{major}
-%define	devname	%mklibname %{name} -d
+%define devname %mklibname %{name} -d
 
 Summary:	Curses Development Kit
 Name:		cdk
@@ -24,7 +22,7 @@ Summary:	Headers to develop cdk-based applications
 Group:		Development/C
 Provides:	%{name}-devel = %{version}-%{release}
 
-%description -n	%{devname}
+%description -n %{devname}
 These are the header files, and cdk preprocessor for developing
 cdk-based applications.
 
@@ -42,7 +40,7 @@ install -d %{buildroot}%{_includedir}/%{name}
 make installCDKHeaderFiles installCDKLibrary INSTALL_DIR=%{buildroot}%{_prefix}
 install -d %{buildroot}%{_mandir}/man3
 make installCDKManPages INSTALL_DIR=%{buildroot}%{_datadir}
- 
+
 %files -n %{devname}
 %doc COPYING README BUGS TODO CHANGES NOTES EXPANDING
 %dir %{_includedir}/%{name}
