@@ -5,7 +5,7 @@
 Summary:	Curses Development Kit
 Name:		cdk
 Version:	4.9.13
-Release:	10
+Release:	11
 License:	BSD
 Group:		System/Libraries
 Url:		http://invisible-island.net/cdk/
