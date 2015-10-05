@@ -66,7 +66,7 @@ find %{buildroot} -name '*.a' -delete -print
 rm -rf %{buildroot}%{_docdir}/%{name}
 
 %files -n %{libname}
-%{_libdir}/*.so.%{major}.*
+%{_libdir}/*.so.%{major}*
 
 %files -n %{develname}
 %doc COPYING README TODO CHANGES NOTES EXPANDING
