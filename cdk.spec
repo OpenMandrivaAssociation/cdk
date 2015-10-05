@@ -1,15 +1,15 @@
 %define debug_package %{nil}
-
 %define devname %mklibname %{name} -d
+%define date 20150928
 
 Summary:	Curses Development Kit
 Name:		cdk
-Version:	4.9.13
-Release:	17
+Version:	5.0
+Release:	0.%{date}.1
 License:	BSD
 Group:		System/Libraries
 Url:		http://invisible-island.net/cdk/
-Source0:	http://invisible-island.net/datafiles/release/%{name}.tar.gz
+Source0:	ftp://invisible-island.net/cdk/cdk-%{version}-%{date}.tgz
 BuildRequires:	pkgconfig(ncurses)
 
 %description
@@ -27,7 +27,8 @@ These are the header files, and cdk preprocessor for developing
 cdk-based applications.
 
 %prep
-%setup -q
+%setup -qn %{name}-%{version}-%{date}
+
 perl -pi -e '/^LIB_DIR/ and s,/lib\b,/%{_lib},' Makefile.in
 
 %build
