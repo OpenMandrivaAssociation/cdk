@@ -61,7 +61,9 @@ sed -i -e "s/\${AR} -cr/\${AR} cr/g" Makefile
 
 # fixes rpmlint unstripped-binary-or-object
 chmod +x %{buildroot}%{_libdir}/*.so*
-
+# delete static libs
+find %{buildroot} -name '*.a' -delete -print
+# delete wrongly installed docs
 rm -rf %{buildroot}%{_docdir}/%{name}
 
 %files -n %{libname}
@@ -73,6 +75,5 @@ rm -rf %{buildroot}%{_docdir}/%{name}
 %dir %{_includedir}/%{name}
 %attr(644,root,root) %{_includedir}/%{name}/*
 %{_bindir}/cdk5-config
-%{_libdir}/lib*.a
 %{_libdir}/*.so
 %{_mandir}/man3/*
