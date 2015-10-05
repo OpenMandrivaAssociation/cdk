@@ -52,7 +52,7 @@ export CFLAGS="%{optflags} -fPIC"
         --disable-rpath-hack
 
 # (tpg) fix for llvm-ar
-sed -i -e "s/${AR} -cr/${AR} cr/g" Makefile
+sed -i -e "s/\${AR} -cr/\${AR} cr/g" Makefile
 
 %make cdkshlib
 
