@@ -44,6 +44,9 @@ cdk-based applications.
 perl -pi -e '/^LIB_DIR/ and s,/lib\b,/%{_lib},' Makefile.in
 
 %build
+# (tpg) fix for llvm-ar
+sed -i -e "s/\${AR} -cr/\${AR} cr/g" aclocal.m4 configure
+
 export CFLAGS="%{optflags} -fPIC"
 %configure \
         --with-ncurses \
@@ -54,9 +57,6 @@ export CFLAGS="%{optflags} -fPIC"
 
 
 %make cdkshlib
-
-# (tpg) fix for llvm-ar
-sed -i -e "s/\${AR} -cr/\${AR} cr/g" Makefile
 
 %install
 %makeinstall_std installCDKSHLibrary INSTALL="install -pD"
