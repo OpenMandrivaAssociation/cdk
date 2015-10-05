@@ -48,6 +48,8 @@ export CFLAGS="%{optflags} -fPIC"
 %configure --with-ncurses --enable-const
 %make cdkshlib
 
+cat Makefile
+
 %install
 %makeinstall_std installCDKSHLibrary INSTALL="install -pD"
 
