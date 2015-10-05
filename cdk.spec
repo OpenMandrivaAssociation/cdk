@@ -1,6 +1,8 @@
 %define debug_package %{nil}
-%define devname %mklibname %{name} -d
 %define date 20150928
+%define major 5
+%define libname %mklibname %{name} %{major}
+%define develname %mklibname %{name} -d
 
 Summary:	Curses Development Kit
 Name:		cdk
@@ -17,12 +19,20 @@ Cdk stands for 'Curses Development Kit' and it currently contains 21 ready
 to use widgets which facilitate the speedy development of full screen
 curses programs.
 
-%package -n	%{devname}
+%package -n %{libname}
+Summary:	CDK library
+Group:		Development/C
+
+%description -n %{libname}
+This the cdk library for developing cdk-based applications.
+
+%package -n %{develname}
 Summary:	Headers to develop cdk-based applications
 Group:		Development/C
-Provides:	%{name}-devel = %{version}-%{release}
+Provides:	%{name}-devel = %{EVRD}
+Provides:	lib%{name}-devel = %{EVRD}
 
-%description -n %{devname}
+%description -n %{develname}
 These are the header files, and cdk preprocessor for developing
 cdk-based applications.
 
@@ -34,19 +44,25 @@ perl -pi -e '/^LIB_DIR/ and s,/lib\b,/%{_lib},' Makefile.in
 %build
 export CFLAGS="%{optflags} -fPIC"
 %configure --with-ncurses --enable-const
-%make
+%make cdkshlib
 
 %install
-install -d %{buildroot}%{_includedir}/%{name}
-make install installCDKSHLibrary DESTDIR=%{buildroot} INSTALL="install -pD"
+%makeinstall_std installCDKSHLibrary INSTALL="install -pD"
 
-install -d %{buildroot}%{_mandir}/man3
-make installCDKManPages INSTALL_DIR=%{buildroot}%{_datadir}
+# fixes rpmlint unstripped-binary-or-object
+chmod +x %{buildroot}%{_libdir}/*.so*
 
-%files -n %{devname}
-%doc COPYING README BUGS TODO CHANGES NOTES EXPANDING
+rm -rf %{buildroot}%{_docdir}/%{name}
+
+%files -n %{libname}
+%{_libdir}/*.so.%{major}.*
+
+%files -n %{develname}
+%doc COPYING README TODO CHANGES NOTES EXPANDING
+%{_includedir}/cdk.h
 %dir %{_includedir}/%{name}
-%{_includedir}/%{name}/*
+%attr(644,root,root) %{_includedir}/%{name}/*
+%{_bindir}/cdk5-config
 %{_libdir}/lib*.a
+%{_libdir}/*.so
 %{_mandir}/man3/*
-
