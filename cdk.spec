@@ -45,10 +45,16 @@ perl -pi -e '/^LIB_DIR/ and s,/lib\b,/%{_lib},' Makefile.in
 
 %build
 export CFLAGS="%{optflags} -fPIC"
-%configure --with-ncurses --enable-const
-%make cdkshlib
+%configure \
+        --with-ncurses \
+        --enable-const \
+        --with-shared \
+        --disable-rpath-hack
 
-cat Makefile
+# (tpg) fix for llvm-ar
+sed -i -e "s/${AR} -cr/${AR} cr/g" Makefile
+
+%make cdkshlib
 
 %install
 %makeinstall_std installCDKSHLibrary INSTALL="install -pD"
