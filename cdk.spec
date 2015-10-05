@@ -51,10 +51,12 @@ export CFLAGS="%{optflags} -fPIC"
         --with-shared \
         --disable-rpath-hack
 
-# (tpg) fix for llvm-ar
-sed -i -e "s/\${AR} -cr/\${AR} cr/g" Makefile
+
 
 %make cdkshlib
+
+# (tpg) fix for llvm-ar
+sed -i -e "s/\${AR} -cr/\${AR} cr/g" Makefile
 
 %install
 %makeinstall_std installCDKSHLibrary INSTALL="install -pD"
