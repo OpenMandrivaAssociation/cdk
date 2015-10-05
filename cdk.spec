@@ -51,10 +51,7 @@ export CFLAGS="%{optflags} -fPIC"
 %configure \
         --with-ncurses \
         --enable-const \
-        --with-shared \
         --disable-rpath-hack
-
-
 
 %make cdkshlib
 
