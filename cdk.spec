@@ -12,6 +12,7 @@ License:	BSD
 Group:		System/Libraries
 Url:		http://invisible-island.net/cdk/
 Source0:	ftp://invisible-island.net/cdk/cdk-%{version}-%{date}.tgz
+Patch0:		cdk-5.0-20150928-do-not-hardcode-gcc.patch
 BuildRequires:	pkgconfig(ncurses)
 
 %description
@@ -38,6 +39,7 @@ cdk-based applications.
 
 %prep
 %setup -qn %{name}-%{version}-%{date}
+%apply_patches
 
 perl -pi -e '/^LIB_DIR/ and s,/lib\b,/%{_lib},' Makefile.in
 
