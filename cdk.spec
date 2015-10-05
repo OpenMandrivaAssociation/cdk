@@ -33,12 +33,13 @@ perl -pi -e '/^LIB_DIR/ and s,/lib\b,/%{_lib},' Makefile.in
 
 %build
 export CFLAGS="%{optflags} -fPIC"
-%configure
+%configure --with-ncurses --enable-const
 %make
 
 %install
 install -d %{buildroot}%{_includedir}/%{name}
-make installCDKHeaderFiles installCDKLibrary INSTALL_DIR=%{buildroot}%{_prefix}
+make install installCDKSHLibrary DESTDIR=%{buildroot} INSTALL="install -pD"
+
 install -d %{buildroot}%{_mandir}/man3
 make installCDKManPages INSTALL_DIR=%{buildroot}%{_datadir}
 
