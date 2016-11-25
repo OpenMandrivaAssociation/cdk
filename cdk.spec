@@ -1,5 +1,5 @@
 %define debug_package %{nil}
-%define date 20160131
+%define date 20161120
 %define major 5
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
@@ -69,7 +69,7 @@ rm -rf %{buildroot}%{_docdir}/%{name}
 %{_libdir}/*.so.%{major}*
 
 %files -n %{develname}
-%doc COPYING README TODO CHANGES NOTES EXPANDING
+%doc README TODO NOTES EXPANDING
 %{_includedir}/cdk.h
 %dir %{_includedir}/%{name}
 %attr(644,root,root) %{_includedir}/%{name}/*
