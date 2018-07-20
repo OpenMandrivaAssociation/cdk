@@ -1,5 +1,5 @@
 %define debug_package %{nil}
-%define date 20161210
+%define date 20180306
 %define major 5
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
@@ -7,7 +7,7 @@
 Summary:	Curses Development Kit
 Name:		cdk
 Version:	5.0
-Release:	0.%{date}.3
+Release:	0.%{date}.4
 License:	BSD
 Group:		System/Libraries
 Url:		http://invisible-island.net/cdk/
