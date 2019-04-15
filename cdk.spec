@@ -1,5 +1,5 @@
 %define debug_package %{nil}
-%define date 20180306
+%define date 20190303
 %define major 5
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
@@ -7,7 +7,7 @@
 Summary:	Curses Development Kit
 Name:		cdk
 Version:	5.0
-Release:	0.%{date}.4
+Release:	0.%{date}.1
 License:	BSD
 Group:		System/Libraries
 Url:		http://invisible-island.net/cdk/
@@ -38,8 +38,7 @@ These are the header files, and cdk preprocessor for developing
 cdk-based applications.
 
 %prep
-%setup -qn %{name}-%{version}-%{date}
-%apply_patches
+%autosetup -n %{name}-%{version}-%{date} -p1
 
 perl -pi -e '/^LIB_DIR/ and s,/lib\b,/%{_lib},' Makefile.in
 
@@ -53,10 +52,10 @@ export CFLAGS="%{optflags} -fPIC"
         --enable-const \
         --disable-rpath-hack
 
-%make cdkshlib
+%make_build cdkshlib
 
 %install
-%makeinstall_std installCDKSHLibrary INSTALL="install -pD"
+%make_install installCDKSHLibrary INSTALL="install -pD"
 
 # fixes rpmlint unstripped-binary-or-object
 chmod +x %{buildroot}%{_libdir}/*.so*
