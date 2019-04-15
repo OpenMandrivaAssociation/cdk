@@ -75,3 +75,4 @@ rm -rf %{buildroot}%{_docdir}/%{name}
 %{_bindir}/cdk5-config
 %{_libdir}/*.so
 %{_mandir}/man3/*
+%{_mandir}/man1/*
