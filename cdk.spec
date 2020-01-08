@@ -1,8 +1,9 @@
 %define debug_package %{nil}
-%define date 20190303
+%define date 20191231
 %define major 5
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
+%global optflags %{optflags} -Oz
 
 Summary:	Curses Development Kit
 Name:		cdk
