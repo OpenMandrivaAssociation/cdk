@@ -1,5 +1,4 @@
-%define debug_package %{nil}
-%define date 20210324
+%define date 20210825
 %define major 5
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
@@ -75,5 +74,5 @@ rm -rf %{buildroot}%{_docdir}/%{name}
 %attr(644,root,root) %{_includedir}/%{name}/*
 %{_bindir}/cdk5-config
 %{_libdir}/*.so
-%{_mandir}/man3/*
-%{_mandir}/man1/*
+%doc %{_mandir}/man3/*
+%doc %{_mandir}/man1/*
