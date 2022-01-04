@@ -1,4 +1,4 @@
-%define date 20210825
+%define date 20211216
 %define major 5
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
@@ -11,7 +11,7 @@ Release:	0.%{date}.1
 License:	BSD
 Group:		System/Libraries
 Url:		http://invisible-island.net/cdk/
-Source0:	ftp://invisible-island.net/cdk/cdk-%{version}-%{date}.tgz
+Source0:	http://invisible-mirror.net/archives/cdk/cdk-%{version}-%{date}.tgz
 Patch0:		cdk-5.0-20150928-do-not-hardcode-gcc.patch
 BuildRequires:	pkgconfig(ncurses)
 
@@ -30,6 +30,7 @@ This the cdk library for developing cdk-based applications.
 %package -n %{develname}
 Summary:	Headers to develop cdk-based applications
 Group:		Development/C
+Requires:	%{libname} = %{EVRD}
 Provides:	%{name}-devel = %{EVRD}
 Provides:	lib%{name}-devel = %{EVRD}
 
