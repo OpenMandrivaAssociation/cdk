@@ -10,7 +10,7 @@ Version:	5.0
 Release:	0.%{date}.1
 License:	BSD
 Group:		System/Libraries
-Url:		http://invisible-island.net/cdk/
+Url:		https://invisible-island.net/cdk/
 Source0:	http://invisible-mirror.net/archives/cdk/cdk-%{version}-%{date}.tgz
 Patch0:		cdk-5.0-20150928-do-not-hardcode-gcc.patch
 BuildRequires:	pkgconfig(ncurses)
