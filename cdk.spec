@@ -13,6 +13,11 @@ Group:		System/Libraries
 Url:		https://invisible-island.net/cdk/
 Source0:	http://invisible-mirror.net/archives/cdk/cdk-%{version}-%{date}.tgz
 Patch0:		cdk-5.0-20150928-do-not-hardcode-gcc.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(ncurses)
 
 %description
